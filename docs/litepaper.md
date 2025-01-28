@@ -59,7 +59,7 @@ The basic operational unit in the GaiaNet network is a node. A GaiaNet node is a
 
 ![GaiaNet node architecture](gaianet_node.png)
 
-**1 Application runtime.** GaiaNet applications run in a lightweight, secure and high-performance sandbox called WasmEdge. As an open-source project managed by the Linux Foundation and CNCF, WasmEdge runtime works seamlessly with leading cloud native tools such as Docker, containerd, CRI-O, Podman and Kubernetes. It is also the virtual machine of choice by leading public blockchains to securely and efficiently execute on-chain and off-chain smart contracts. 
+**1 Application runtime.** GaiaNet applications run in a lightweight, secure and high-performance sandbox called WasmEdge. As an open-source project managed by the Linux Foundation and CNCF, WasmEdge runtime works seamlessly with leading cloud native tools such as Docker, containers, CRI-O, Podman and Kubernetes. It is also the virtual machine of choice by leading public blockchains to securely and efficiently execute on-chain and off-chain smart contracts. 
 
 WasmEdge is a high-performance and cross-platform runtime. It can run AI models on almost all CPUs, GPUs, and AI accelerators at native speed, making it an ideal runtime for decentralized AI agents.
 
@@ -82,11 +82,11 @@ Furthermore, effective prompts could be highly dependent on the model in use. A 
 The GaiaNet node can support several different prompts that are dynamically chosen and used in applications. For example,
 
 * The `system_prompt` is a general introduction to the agent task the node is supposed to perform. It often contains a persona to help the LLM respond with the right tone. For example, the `system_prompt` for a college teaching assistant could be: “You are a teaching assistant for UC Berkeley’s computer science 101 class. Please explain concepts and answer questions in detail. Do not answer any question that is not related to math or computer science.”
-* The `rag_prompt` is a prefix prompt to be dynamically inserted in front of knowledge base search results in an RAG chat. It could be something like this: “Please answer the question based on facts and opinions in the context below. Do not make anything that is not in the context. ---------”
+* The `rag_prompt` is a prefix prompt that can be dynamically inserted in front of knowledge base search results in an RAG chat. It could be something like this: “Please answer the question based on facts and opinions in the context below. Do not make anything that is not in the context. ---------”
 
 The LLM community has developed many useful prompts for different application use cases. GaiaNet node allows you to easily manage and experiment with them. 
 
-Through the our developer SDK, GaiaNet owners and operators could customize the logic of dynamic prompt generation in their own way. For example, a GaiaNet node could perform a Google search for any user question, and add the search results into the prompt as context.
+Through our developer SDK, GaiaNet owners and operators could customize the logic of dynamic prompt generation in their own way. For example, a GaiaNet node could perform a Google search for any user question, and add the search results into the prompt as context.
 
 **6 Function calls and tool use.** The LLM not only is great at generating human language, but also excels at generating machine instructions. Through finetuning and prompt engineering, we could get some LLMs to consistently generate structured JSON objects or computer code in many language tasks, such as summarizing and extracting key elements from a paragraph of text.
 
@@ -142,11 +142,11 @@ Those challenges have given rise to the GaiaNet domain, which forms the basis of
 
 ![GaiaNet network architecture](gaianet_eco.png)
 
-Each GaiaNet node has an unique node ID in the form of an ETH address. The private key associated with the ETH address is stored on the node. Once a node is successfully registered with a domain, it is entitled to receive payments from both service revenue and network awards from the domain. The domain could send payments directly to the node's ETH address. Or, the domain could provide a mechanism for a node operator to register multiple nodes under a single Metamask address, such as signing a challenge phrase using the node private keys. In that case, the node operator will receive aggregated payments in his Metamask account for all associated nodes.
+Each GaiaNet node has a unique node ID in the form of an ETH address. The private key associated with the ETH address is stored on the node. Once a node is successfully registered with a domain, it is entitled to receive payments from both service revenue and network awards from the domain. The domain could send payments directly to the node's ETH address. Or, the domain could provide a mechanism for a node operator to register multiple nodes under a single Metamask address, such as signing a challenge phrase using the node private keys. In that case, the node operator will receive aggregated payments in his Metamask account for all associated nodes.
 
 Each GaiaNet domain has an associated smart contract that is used for escrow payments. It is similar to OpenAI’s credit payment model, where users purchase credits first, and then consume them over time. When the user pays into the smart contract, an access token will be automatically issued to him. He uses this token to make API calls to the domain, which is then load-balanced to random nodes in the domain. As the user consumes those services, his fund in the contract depletes and the access token stops working if he no longer has any balance. 
 
-The pricing and payment of the API service are determined by the domain operator. It is typically denominated in USD stable coins. The domain operator pays a share of the revenue to node operators who provided the services. The GaiaNet network is a decentralized marketplace of agent services.
+The pricing and payment of the API service are determined by the domain operator. It is typically denominated in USD stablecoins. The domain operator pays a share of the revenue to node operators who provide the services. The GaiaNet network is a decentralized marketplace of agent services.
 
 > The funds locked in GaiaNet domain contracts are for a single purpose of consuming API services. It is called Purpose Bound Money. 
 
